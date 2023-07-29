@@ -1,0 +1,3 @@
+username = admin
+email = courseraproj@gmail.com
+paasword = apiproject
