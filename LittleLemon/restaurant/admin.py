@@ -4,4 +4,5 @@ from .models import *
 # Register your models here.
 
 admin.site.register(Booking)
-admin.site.register(Menu)
+admin.site.register(MenuItem)
+admin.site.register(Order)

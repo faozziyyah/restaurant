@@ -7,10 +7,10 @@ class Booking(models.Model):
     No_of_guests = models.IntegerField()
     BookingDate = models.DateField(db_index=True)
 
-class Menu(models.Model):
-    Title = models.CharField(max_length=255, db_index=True)
-    Price = models.DecimalField(max_digits=10, decimal_places=2, db_index=True)
-    Inventory = models.IntegerField()
+class MenuItem(models.Model):
+    Title = models.CharField(max_length=255)
+    Price = models.DecimalField(max_digits=6, decimal_places=2)
+    Inventory = models.SmallIntegerField()
 
 #class Cart(models.Model):
 #    user = models.ForeignKey(User, on_delete=models.CASCADE)
@@ -22,12 +22,12 @@ class Menu(models.Model):
 #    class Meta:
 #        unique_together = ('menuitem', 'user')
 #
-#class Order(models.Model):
-#    user = models.ForeignKey(User, on_delete=models.CASCADE)
-#    delivery_crew = models.ForeignKey(User, on_delete=models.CASCADE, related_name='delivery_crew', null=True)
-#    status = models.BooleanField(db_index=True, default=0)
-#    total = models.DecimalField(max_digits=6, decimal_places=2)
-#    date = models.DateField(db_index=True)
+class Order(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    delivery_crew = models.ForeignKey(User, on_delete=models.CASCADE, related_name='delivery_crew', null=True)
+    status = models.BooleanField(db_index=True, default=0)
+    total = models.DecimalField(max_digits=6, decimal_places=2)
+    date = models.DateField(db_index=True)
 #
 #class OrderItem(models.Model):
 #    order = models.ForeignKey(User, on_delete=models.CASCADE)
