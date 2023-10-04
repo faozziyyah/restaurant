@@ -7,7 +7,11 @@ from rest_framework import routers
 router = routers.DefaultRouter()
 router.register(r'users', UserViewSet)
 router.register('booking', BookingViewset)
-router.register('menu', MenuItemViewset)
+router.register('menu-items', MenuItemViewset)
+router.register('categories', CategoryViewset)
+router.register('ratings', RatingsView)
+router.register('cart/menu-items', CartViewset)
+router.register('orders', OrderViewset)
   
 urlpatterns = [ 
     #path('', views.index, name='index'),

@@ -6,3 +6,5 @@ from .models import *
 admin.site.register(Booking)
 admin.site.register(MenuItem)
 admin.site.register(Order)
+admin.site.register(Category)
+admin.site.register(Rating)
