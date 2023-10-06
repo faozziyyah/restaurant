@@ -1,10 +1,10 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from rest_framework.parsers import MultiPartParser, FormParser
-from rest_framework.permissions import IsAuthenticated
+from rest_framework.decorators import api_view, permission_classes
+from rest_framework.permissions import IsAuthenticated, IsAdminUser
 from rest_framework import viewsets, status
 from rest_framework.response import Response
-from rest_framework.permissions import IsAdminUser
 from django.shortcuts import  get_object_or_404
 from django.contrib.auth.models import Group, User
 from .models import *
@@ -14,9 +14,16 @@ from .serializers import *
 def index(request):
     return render(request, 'index.html', {})
 
+@api_view()
+@permission_classes([IsAuthenticated])
+# @authentication_classes([TokenAuthentication])
+def msg(request):
+    return Response({"message":"This view is protected"})
+
 class UserViewSet(viewsets.ModelViewSet):
     serializer_class = UserSerializer
     queryset = User.objects.all()
+    permission_classes = [IsAuthenticated] 
 
 class BookingViewset(viewsets.ModelViewSet):
     serializer_class = BookingSerializer

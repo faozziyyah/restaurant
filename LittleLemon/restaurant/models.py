@@ -20,8 +20,8 @@ class MenuItem(models.Model):
     Inventory = models.SmallIntegerField()
     category = models.ForeignKey(Category, on_delete=models.PROTECT, default=1)
 
-    def __str__(self)-> str:
-        return self.title
+    def get_item(self):
+        return f'{self.title} : {str(self.price)}'
 
 class Order(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
